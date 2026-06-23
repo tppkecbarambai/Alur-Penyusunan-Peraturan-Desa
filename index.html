@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alur Penyusunan Peraturan Desa - Sesuai Regulasi Terbaru</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'desa-green': '#059669',
+        'desa-sky': '#0ea5e9',
+        'desa-dark': '#064e3b'
+      }
+    }
+  }
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+.gradient-bg {
+  background: linear-gradient(135deg, #059669 0%, #0ea5e9 100%);
+}
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+.step-line {
+  position: absolute;
+  left: 1.25rem;
+  top: 3rem;
+  bottom: -1.5rem;
+  width: 2px;
+  background: linear-gradient(180deg, #059669 0%, #0ea5e9 100%);
+}
+@media (max-width: 768px) {
+  .step-line {
+    left: 1rem;
+  }
+}
+.step-item:last-child .step-line {
+  display: none;
+}
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.accordion-active .accordion-content {
+  max-height: 500px;
+  transition: max-height 0.5s ease-in;
+}
+.accordion-active .fa-chevron-down {
+  transform: rotate(180deg);
+}
+.timeline-dot {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Back Button -->
+  <div class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <a href="https://tppkecamatanbarambai.blogspot.com/p/dasboard-progres-pendampingan.html?m=1" 
+         class="inline-flex items-center gap-2 text-desa-green hover:text-desa-dark font-medium transition-colors">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Kembali ke Dashboard Pendampingan</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="gradient-bg text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white/20 rounded-2xl backdrop-blur-sm mb-6">
+          <i class="fa-solid fa-scale-balanced text-2xl md:text-3xl"></i>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">ALUR PENYUSUNAN PERATURAN DESA</h1>
+        <p class="text-base md:text-xl text-white/90 font-medium max-w-3xl mx-auto">Berdasarkan UU Nomor 3 Tahun 2025, Permendagri No. 111 Tahun 2014, dan PP No. 16 Tahun 2026</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
+        <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 card-hover">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-book text-xl"></i>
+            <div>
+              <p class="text-sm text-white/80">Undang-Undang</p>
+              <p class="font-semibold">UU No. 3 Tahun 2025</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 card-hover">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-file-contract text-xl"></i>
+            <div>
+              <p class="text-sm text-white/80">Permendagri</p>
+              <p class="font-semibold">No. 111 Tahun 2014</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 card-hover">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-gavel text-xl"></i>
+            <div>
+              <p class="text-sm text-white/80">Peraturan Pemerintah</p>
+              <p class="font-semibold">PP No. 16 Tahun 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+    <!-- Pengertian Section -->
+    <section class="mb-16">
+      <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-gray-100 card-hover">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-desa-green/10 flex items-center justify-center">
+            <i class="fa-solid fa-circle-info text-desa-green text-xl"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Apa itu Peraturan Desa?</h2>
+            <p class="text-gray-600 leading-relaxed">Peraturan Desa adalah peraturan perundang-undangan yang ditetapkan oleh Kepala Desa setelah dibahas dan disepakati bersama Badan Permusyawaratan Desa. Perdes merupakan penjabaran lebih lanjut dari peraturan perundang-undangan yang lebih tinggi dengan memperhatikan kondisi sosial budaya masyarakat desa setempat.</p>
+            <div class="mt-4 inline-flex items-center gap-2 text-sm text-desa-green bg-desa-green/10 px-4 py-2 rounded-lg">
+              <i class="fa-solid fa-bookmark"></i>
+              <span class="font-medium">Dasar: UU No. 3/2025 Pasal 79 & PP 16/2026 Pasal 12</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Infographic -->
+    <section class="mb-16">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3">Timeline Tahapan Penyusunan</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Berikut adalah 5 tahapan utama dalam penyusunan Peraturan Desa yang wajib dilaksanakan sesuai ketentuan perundang-undangan</p>
+      </div>
+      
+      <div class="hidden md:grid grid-cols-5 gap-4 mb-12">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto bg-desa-green rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-desa-green/30 timeline-dot">1</div>
+          <p class="mt-3 font-semibold text-sm">Perencanaan</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto bg-desa-green rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-desa-green/30">2</div>
+          <p class="mt-3 font-semibold text-sm">Pembahasan</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto bg-desa-sky rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-desa-sky/30">3</div>
+          <p class="mt-3 font-semibold text-sm">Penetapan</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto bg-desa-sky rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-desa-sky/30">4</div>
+          <p class="mt-3 font-semibold text-sm">Pengundangan</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto bg-gray-700 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-gray-700/30">5</div>
+          <p class="mt-3 font-semibold text-sm">Penyebarluasan</p>
+        </div>
+      </div>
+
+      <!-- Stepper Visual -->
+      <div class="space-y-6">
+        <!-- Step 1 -->
+        <div class="step-item relative">
+          <div class="step-line"></div>
+          <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 ml-12 md:ml-16 card-hover">
+            <div class="absolute left-0 md:left-1.5 top-6 w-10 h-10 md:w-10 md:h-10 bg-desa-green rounded-full flex items-center justify-center text-white font-bold shadow-lg">1</div>
+            <div class="flex flex-col md:flex-row md:items-start gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                  <i class="fa-solid fa-pen-ruler text-desa-green text-xl"></i>
+                  <h3 class="text-xl md:text-2xl font-bold text-gray-900">Perencanaan</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Penyusunan Rancangan Peraturan Desa oleh BPD atau Kepala Desa berdasarkan aspirasi masyarakat dan program pembangunan desa.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-green/10 text-desa-green px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-scale-balanced"></i> UU 3/2025 Psl 80
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-green/10 text-desa-green px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-file"></i> Permendagri 111/2014 Psl 6
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-green/10 text-desa-green px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-list"></i> PP 16/2026 Psl 14
+                  </span>
+                </div>
+              </div>
+              <div class="accordion w-full md:w-80">
+                <button class="accordion-btn w-full flex justify-between items-center bg-gray-50 hover:bg-gray-100 px-4 py-3 rounded-lg transition-colors" aria-expanded="false">
+                  <span class="font-semibold text-sm text-gray-700">Detail Tahapan</span>
+                  <i class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                </button>
+                <div class="accordion-content">
+                  <ul class="text-sm text-gray-600 space-y-2 pt-4 px-2">
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-green mt-1"></i> Penyusunan naskah akademik jika diperlukan</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-green mt-1"></i> Rancangan disusun oleh Kades atau atas usul BPD</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-green mt-1"></i> Memperhatikan aspirasi masyarakat desa</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-green mt-1"></i> Harmonisasi dengan peraturan di atasnya</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-item relative">
+          <div class="step-line"></div>
+          <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 ml-12 md:ml-16 card-hover">
+            <div class="absolute left-0 md:left-1.5 top-6 w-10 h-10 md:w-10 md:h-10 bg-desa-green rounded-full flex items-center justify-center text-white font-bold shadow-lg">2</div>
+            <div class="flex flex-col md:flex-row md:items-start gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                  <i class="fa-solid fa-users-line text-desa-green text-xl"></i>
+                  <h3 class="text-xl md:text-2xl font-bold text-gray-900">Pembahasan</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Pembahasan rancangan Perdes bersama antara BPD dan Pemerintah Desa dengan melibatkan partisipasi masyarakat desa secara aktif.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-green/10 text-desa-green px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-scale-balanced"></i> UU 3/2025 Psl 81
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-green/10 text-desa-green px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-comments"></i> Permendagri 111/2014 Psl 8-9
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-green/10 text-desa-green px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-handshake"></i> PP 16/2026 Psl 16
+                  </span>
+                </div>
+              </div>
+              <div class="accordion w-full md:w-80">
+                <button class="accordion-btn w-full flex justify-between items-center bg-gray-50 hover:bg-gray-100 px-4 py-3 rounded-lg transition-colors" aria-expanded="false">
+                  <span class="font-semibold text-sm text-gray-700">Detail Tahapan</span>
+                  <i class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                </button>
+                <div class="accordion-content">
+                  <ul class="text-sm text-gray-600 space-y-2 pt-4 px-2">
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-green mt-1"></i> Musyawarah BPD dan Pemdes</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-green mt-1"></i> Uji publik & penyerapan aspirasi</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-green mt-1"></i> Penyempurnaan rancangan berdasarkan masukan</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-green mt-1"></i> Pengambilan keputusan bersama BPD</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-item relative">
+          <div class="step-line"></div>
+          <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 ml-12 md:ml-16 card-hover">
+            <div class="absolute left-0 md:left-1.5 top-6 w-10 h-10 md:w-10 md:h-10 bg-desa-sky rounded-full flex items-center justify-center text-white font-bold shadow-lg">3</div>
+            <div class="flex flex-col md:flex-row md:items-start gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                  <i class="fa-solid fa-stamp text-desa-sky text-xl"></i>
+                  <h3 class="text-xl md:text-2xl font-bold text-gray-900">Penetapan</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Rancangan Peraturan Desa yang telah disepakati bersama BPD ditetapkan oleh Kepala Desa menjadi Peraturan Desa.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-sky/10 text-desa-sky px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-scale-balanced"></i> UU 3/2025 Psl 82
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-sky/10 text-desa-sky px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-gavel"></i> Permendagri 111/2014 Psl 11
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-sky/10 text-desa-sky px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-file-signature"></i> PP 16/2026 Psl 18
+                  </span>
+                </div>
+              </div>
+              <div class="accordion w-full md:w-80">
+                <button class="accordion-btn w-full flex justify-between items-center bg-gray-50 hover:bg-gray-100 px-4 py-3 rounded-lg transition-colors" aria-expanded="false">
+                  <span class="font-semibold text-sm text-gray-700">Detail Tahapan</span>
+                  <i class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                </button>
+                <div class="accordion-content">
+                  <ul class="text-sm text-gray-600 space-y-2 pt-4 px-2">
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-sky mt-1"></i> Penandatanganan oleh Kepala Desa</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-sky mt-1"></i> Pemberian nomor dan tahun Perdes</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-sky mt-1"></i> Paling lambat 7 hari setelah kesepakatan</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-sky mt-1"></i> Dokumentasi naskah asli</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-item relative">
+          <div class="step-line"></div>
+          <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 ml-12 md:ml-16 card-hover">
+            <div class="absolute left-0 md:left-1.5 top-6 w-10 h-10 md:w-10 md:h-10 bg-desa-sky rounded-full flex items-center justify-center text-white font-bold shadow-lg">4</div>
+            <div class="flex flex-col md:flex-row md:items-start gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                  <i class="fa-solid fa-scroll text-desa-sky text-xl"></i>
+                  <h3 class="text-xl md:text-2xl font-bold text-gray-900">Pengundangan</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Sekretaris Desa mengundangkan Peraturan Desa dalam Lembaran Desa dan Berita Desa agar mempunyai kekuatan hukum mengikat.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-sky/10 text-desa-sky px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-scale-balanced"></i> UU 3/2025 Psl 83
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-sky/10 text-desa-sky px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-book"></i> Permendagri 111/2014 Psl 13
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-desa-sky/10 text-desa-sky px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-feather"></i> PP 16/2026 Psl 19
+                  </span>
+                </div>
+              </div>
+              <div class="accordion w-full md:w-80">
+                <button class="accordion-btn w-full flex justify-between items-center bg-gray-50 hover:bg-gray-100 px-4 py-3 rounded-lg transition-colors" aria-expanded="false">
+                  <span class="font-semibold text-sm text-gray-700">Detail Tahapan</span>
+                  <i class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                </button>
+                <div class="accordion-content">
+                  <ul class="text-sm text-gray-600 space-y-2 pt-4 px-2">
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-sky mt-1"></i> Diundangkan oleh Sekretaris Desa</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-sky mt-1"></i> Dimasukkan dalam Lembaran Desa</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-sky mt-1"></i> Berlaku sejak tanggal pengundangan</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-desa-sky mt-1"></i> Arsip dan dokumentasi resmi</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-item relative">
+          <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 ml-12 md:ml-16 card-hover">
+            <div class="absolute left-0 md:left-1.5 top-6 w-10 h-10 md:w-10 md:h-10 bg-gray-700 rounded-full flex items-center justify-center text-white font-bold shadow-lg">5</div>
+            <div class="flex flex-col md:flex-row md:items-start gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                  <i class="fa-solid fa-bullhorn text-gray-700 text-xl"></i>
+                  <h3 class="text-xl md:text-2xl font-bold text-gray-900">Penyebarluasan</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Pemerintah Desa wajib menyebarluaskan Peraturan Desa kepada masyarakat agar diketahui, dipahami, dan dilaksanakan.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-gray-700/10 text-gray-700 px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-scale-balanced"></i> UU 3/2025 Psl 84
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-gray-700/10 text-gray-700 px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-volume-high"></i> Permendagri 111/2014 Psl 15
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-gray-700/10 text-gray-700 px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-users"></i> PP 16/2026 Psl 21
+                  </span>
+                </div>
+              </div>
+              <div class="accordion w-full md:w-80">
+                <button class="accordion-btn w-full flex justify-between items-center bg-gray-50 hover:bg-gray-100 px-4 py-3 rounded-lg transition-colors" aria-expanded="false">
+                  <span class="font-semibold text-sm text-gray-700">Detail Tahapan</span>
+                  <i class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                </button>
+                <div class="accordion-content">
+                  <ul class="text-sm text-gray-600 space-y-2 pt-4 px-2">
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-gray-700 mt-1"></i> Sosialisasi melalui musyawarah desa</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-gray-700 mt-1"></i> Papan pengumuman desa</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-gray-700 mt-1"></i> Media digital / website desa</li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-gray-700 mt-1"></i> Penyuluhan kepada tokoh masyarakat</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evaluasi & Klarifikasi -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-br from-desa-green to-desa-sky rounded-2xl shadow-xl p-6 md:p-10 text-white">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <i class="fa-solid fa-clipboard-check text-2xl"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-2">Evaluasi & Klarifikasi</h2>
+            <p class="text-white/90">Perdes tertentu wajib disampaikan ke Bupati/Walikota untuk dievaluasi dan diklarifikasi sebelum ditetapkan</p>
+          </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
+            <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-file-shield"></i> Perdes Wajib Evaluasi
+            </h3>
+            <ul class="space-y-2 text-sm text-white/90">
+              <li class="flex gap-2"><i class="fa-solid fa-circle text-[6px] mt-2"></i> APB Desa</li>
+              <li class="flex gap-2"><i class="fa-solid fa-circle text-[6px] mt-2"></i> Tata Ruang Desa</li>
+              <li class="flex gap-2"><i class="fa-solid fa-circle text-[6px] mt-2"></i> Pungutan Desa</li>
+              <li class="flex gap-2"><i class="fa-solid fa-circle text-[6px] mt-2"></i> Penataan Desa</li>
+            </ul>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
+            <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-clock"></i> Waktu Evaluasi
+            </h3>
+            <p class="text-sm text-white/90 mb-2">Bupati/Walikota melakukan evaluasi paling lambat 20 hari kerja sejak Perdes diterima.</p>
+            <p class="text-xs bg-white/20 px-3 py-2 rounded-lg inline-block">
+              <i class="fa-solid fa-bookmark mr-1"></i> Permendagri 111/2014 Psl 12 & PP 16/2026 Psl 20
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center">
+      <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100">
+        <i class="fa-solid fa-download text-4xl text-desa-green mb-4"></i>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Butuh Template Perdes?</h2>
+        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Unduh contoh format dan template penyusunan Peraturan Desa sesuai regulasi terbaru untuk memudahkan proses di desa Anda</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://tppkecamatanbarambai.blogspot.com/p/dasboard-progres-pendampingan.html?m=1" 
+             class="inline-flex items-center justify-center gap-2 bg-desa-green hover:bg-desa-dark text-white font-semibold px-6 py-3 rounded-xl transition-all hover:shadow-lg hover:shadow-desa-green/30">
+            <i class="fa-solid fa-house"></i> Kembali ke Dashboard
+          </a>
+          <button onclick="window.print()" 
+             class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border-2 border-gray-200 transition-all">
+            <i class="fa-solid fa-print"></i> Cetak Halaman Ini
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-desa-green rounded-lg flex items-center justify-center">
+              <i class="fa-solid fa-landmark text-white"></i>
+            </div>
+            <span class="font-bold text-white text-lg">Portal Desa</span>
+          </div>
+          <p class="text-sm text-gray-400">Panduan resmi alur penyusunan Peraturan Desa berdasarkan regulasi terbaru tahun 2025-2026.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4">Regulasi Terkait</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-desa-green transition-colors">UU Nomor 3 Tahun 2025</a></li>
+            <li><a href="#" class="hover:text-desa-green transition-colors">Permendagri No. 111/2014</a></li>
+            <li><a href="#" class="hover:text-desa-green transition-colors">PP Nomor 16 Tahun 2026</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4">Tautan</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://tppkecamatanbarambai.blogspot.com/p/dasboard-progres-pendampingan.html?m=1" class="hover:text-desa-green transition-colors">Dashboard Pendampingan</a></li>
+            <li><a href="#" class="hover:text-desa-green transition-colors" onclick="window.scrollTo({top:0,behavior:'smooth'})">Kembali ke Atas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+        <p>&copy; 2026 Pemerintah Desa. Disusun berdasarkan regulasi terbaru. Seluruh hak cipta dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Accordion functionality
+    document.querySelectorAll('.accordion-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const accordion = this.parentElement;
+        const isActive = accordion.classList.contains('accordion-active');
+        
+        // Close all accordions
+        document.querySelectorAll('.accordion').forEach(acc => {
+          acc.classList.remove('accordion-active');
+          acc.querySelector('.accordion-btn').setAttribute('aria-expanded', 'false');
+        });
+        
+        // Toggle current
+        if (!isActive) {
+          accordion.classList.add('accordion-active');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+</body>
+</html>
